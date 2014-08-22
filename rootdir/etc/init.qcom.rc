@@ -51,6 +51,11 @@ on init
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
     export SECONDARY_STORAGE /storage/sdcard1
+    
+    #Mount
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system ro,barrier=1
+    mount f2fs /dev/block/platform/msm_sdcc.1/by-name/userdata rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr,errors=recover
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache rw,nosuid,nodev,noatime,nodiratime,data=writeback,noauto_da_alloc,barrier=1
 
     # Support legacy paths
     symlink /storage/emulated/legacy /sdcard
